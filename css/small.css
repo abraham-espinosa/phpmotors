@@ -1,0 +1,163 @@
+/* Body */
+body {
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-family:monospace;
+}
+
+/* Content */
+#content{
+    background-color: #ffffff;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+/* Header */
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 5px;
+}
+
+header img{
+    grid-column: 1/2;
+}
+header p{
+    grid-column: 3/4;
+    text-align: right;
+    margin-top: 20px;
+    margin-right: 40px;
+    font-size: 1.1rem;
+    color: #8d8d8d;
+}
+
+/* Navigation Bar */
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #3a3a3a;
+}
+
+nav ul li {
+    float: left;
+}
+  
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+ }
+
+nav ul li a:hover:not(.active){
+    background-color: #4a4a4a;
+}
+  
+.active {
+    background-color: #4c96d7;
+}
+li.active a{
+    color: #000000;
+}
+
+/* Footer */
+footer{
+    text-align: center;
+    border-top: 4px solid black;
+    padding: 0;
+    margin-top: 40px;
+}
+footer p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Main */
+/* Section 1 */
+.img-section {
+    margin: 0 auto;
+    position: relative;
+}
+
+.img-section img {
+    height: auto;
+    width: 100%;
+    margin-top: 45px;
+}
+
+.text-section {
+    display: block;
+    position: absolute;
+    top: 0px;
+    padding: 0rem;
+    text-align: left;
+}
+
+section.text-section h2, section.text-section p, section.text-section img {
+    margin: 0;
+    margin-left: 5px;
+    color: #4c96d7;
+}
+
+section.text-section img{
+    height: auto;
+    width: 35%;
+    margin-top: 5%;
+    display: none;
+}
+
+img.button-display{
+    width: 50%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main article section img {
+    padding: .5em;
+    width: 50px;
+}
+
+/*Section2 */
+section ul li{
+    padding: 10px;
+}
+
+/*Section3 */
+.upgrade{
+    background-color: #4c96d7;
+    border: 1px solid black;
+}
+
+section.upgrade img{
+    height: 80px;
+    width: auto;
+}
+
+article.delorean-upgrade {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

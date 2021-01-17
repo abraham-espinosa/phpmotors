@@ -1,0 +1,53 @@
+/* Medium and Large View */
+@media only screen and (min-width: 50rem) {
+
+    #content{
+        margin: 20px auto;
+        border: #4c96d7 5px solid;
+        border-radius: 8px 8px 8px 8px;
+    }
+
+    body{
+        background-image: url('../images/site/small_check.jpg');
+        font-size: 1.2rem;
+    }
+
+    /*Main*/
+    main{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 40px;
+    }
+    main section:nth-child(1){
+        grid-column: 1/3;
+        grid-row: 1;
+    }
+    main section:nth-child(2){
+        grid-column: 2/3;
+        grid-row: 2;
+    }
+    main section:nth-child(3){
+        grid-column: 1/2;
+        grid-row: 2;
+    }
+
+    main section{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    /*Section 1*/
+    section.text-section img{
+        display: inline;
+    }
+
+    img.button-display{
+        display: none;
+    }
+    section.text-section h1{
+        margin-left: -10px;
+    }
+
+}
+
+/*end medium */
