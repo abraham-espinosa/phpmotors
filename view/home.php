@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="PHP Motors - BYUI - Abraham Espinosa" />
     <title>Home | PHP Motors</title>
-    <link href="css/normalize.css" rel="stylesheet">
-    <link href="css/small.css" media="screen" rel="stylesheet">
-    <link href="css/medium.css" media="screen" rel="stylesheet">
+    <link href="/phpmotors/css/normalize.css" rel="stylesheet">
+    <link href="/phpmotors/css/small.css" media="screen" rel="stylesheet">
+    <link href="/phpmotors/css/medium.css" media="screen" rel="stylesheet">
 </head>
 
 <body>
@@ -19,21 +19,22 @@
         </header>
         <!-- Navegation Bar -->
         <nav>
-            <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';?>
+            <?php //equire $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';
+            echo $navList; ?>
         </nav>
         <main>
             <section>
                 <div class="img-section">
-                    <img src="images/delorean.jpg" alt="Delorean">
+                    <img src="/phpmotors/images/delorean.jpg" alt="Delorean">
                     <section class="text-section">
                         <h1>Welcome to PHP Motors!</h1>
                         <h2>DMC Delorean</h2>
                         <p>3 Cup holders</p>
                         <p>Superman doors</p>
                         <p>Fuzzy dice!</p>
-                        <img src="images/site/own_today.png" alt="Own-today">
+                        <img src="/phpmotors/images/site/own_today.png" alt="Own-today">
                     </section>
-                    <img class="button-display" src="images/site/own_today.png" alt="Own-today">
+                    <img class="button-display" src="/phpmotors/images/site/own_today.png" alt="Own-today">
                 </div>
             </section>
             <section>
@@ -51,25 +52,25 @@
                 <article class="delorean-upgrade">
                     <div>
                         <section class="upgrade">
-                           <img  src="images/upgrades/flux-cap.png" alt="Flux-capacitor">
+                           <img  src="/phpmotors/images/upgrades/flux-cap.png" alt="Flux-capacitor">
                          </section>
                          <a href="#">Flux Capacitor</a>
                     </div>
                     <div>
                         <section class="upgrade">
-                            <img  src="images/upgrades/flame.jpg" alt="Flame-decals">
+                            <img  src="/phpmotors/images/upgrades/flame.jpg" alt="Flame-decals">
                         </section>
                         <a href="#">Flame Decals</a>
                     </div>
                     <div>
                         <section class="upgrade">
-                            <img  src="images/upgrades/bumper_sticker.jpg" alt="Bumper-stickers">
+                            <img  src="/phpmotors/images/upgrades/bumper_sticker.jpg" alt="Bumper-stickers">
                         </section>
                         <a href="#">Bumper Stickers</a>
                     </div>
                     <div>
                         <section class="upgrade">
-                            <img src="images/upgrades/hub-cap.jpg" alt="Hub-cap">
+                            <img src="/phpmotors/images/upgrades/hub-cap.jpg" alt="Hub-cap">
                         </section>
                         <a href="#">Hub Caps</a>
                     </div>
@@ -81,7 +82,7 @@
             <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';?>
         </footer>
     </div>
-    <script src="js/footer.js"></script>
+    <script src="/phpmotors/js/footer.js"></script>
 </body>
 
 </html>
