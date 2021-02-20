@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="PHP Motors - BYUI" />
-    <title>Sing in | PHP Motors</title>
+    <title>Registration | PHP Motors</title>
     <link href="/phpmotors/css/normalize.css" rel="stylesheet">
     <link href="/phpmotors/css/small.css" media="screen" rel="stylesheet">
     <link href="/phpmotors/css/medium.css" media="screen" rel="stylesheet">
@@ -23,18 +23,17 @@
         <?php echo $navList; ?>
         </nav>
         <main>
-            <form>    
-                <h1>Sign in</h1>
+            <form method="post" action="/phpmotors/vehicles/index.php"> 
+                <h1>Add Classification</h1>
                 <!-- See if a "$message" variable exists, and if so, to echo it -->
                 <?php
                     if (isset($message)) {
                         echo $message;
                     }
-                ?>   
-                <label class="top">Email<input type="email" name="email" placeholder="someone@gmail.com" required></label>
-                <label class="top">Password <input type="password" name="password" required></label>
-                <input type="submit" value="Sign-in" class="submitBtn">
-                <p><a href="/phpmotors/accounts/index.php?action=registration">Not a member yet?</a><p>
+                ?>       
+                <label class="top">Classification Name <input type="text" name="classificationName"></label>
+                <input type="submit" name="submit" id="regbtn" value="Add Classification" class="submitBtn">
+                <input type="hidden" name="action" value="new-classification">
             </form>
         </main>
         <!-- Footer -->
