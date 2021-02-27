@@ -23,7 +23,7 @@
         <?php echo $navList; ?>
         </nav>
         <main>
-            <form>    
+            <form method="post" action="/phpmotors/accounts/index.php"> 
                 <h1>Sign in</h1>
                 <!-- See if a "$message" variable exists, and if so, to echo it -->
                 <?php
@@ -31,9 +31,10 @@
                         echo $message;
                     }
                 ?>   
-                <label class="top">Email<input type="email" name="email" placeholder="someone@gmail.com" required></label>
-                <label class="top">Password <input type="password" name="password" required></label>
-                <input type="submit" value="Sign-in" class="submitBtn">
+                <label class="top">Email<input type="email" name="clientEmail" placeholder="someone@gmail.com" <?php if(isset($clientEmail)){echo "value='$clientEmail'";}  ?> required></label>
+                <label class="top">Password <span><br>Must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character.</span><input type="password" name="clientPassword" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required></label>
+                <input type="submit" value="Login" class="submitBtn">
+                <input type="hidden" name="action" value="Login">
                 <p><a href="/phpmotors/accounts/index.php?action=registration">Not a member yet?</a><p>
             </form>
         </main>

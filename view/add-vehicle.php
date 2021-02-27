@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+<?php
+    // Build a select list using the $classifications array
+    $selectList = '<select name="classificationId" required>';
+    $selectList .= "<option value='' disabled selected>Choose Car Classification</option>";
+    foreach ($classifications as $classification) {
+        $selectList .= "<option value='$classification[classificationId]'";
+            if(isset($classificationId)){
+                if($classification['classificationId'] === $classificationId){
+                    $selectList .= ' selected ';
+                }
+            }
+        $selectList .= ">$classification[classificationName]</option>";
+    }
+    $selectList .= '</select>';
+
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -30,14 +45,14 @@
                 <form method="post" action="/phpmotors/vehicles/index.php"> 
                     <!-- See if a "$message" variable exists, and if so, to echo it -->
                     <?php echo $selectList; ?>    
-                    <label class="top">Make <input type="text" name="invMake"></label>
-                    <label class="top">Model <input type="text" name="invModel"></label>
-                    <label class="top">Description <input type="text" name="invDescription"></label>
-                    <label class="top">Image Path <input type="text" name="invImage" value="/images/no-image.png"></label>
-                    <label class="top">Thumbnail Path<input type="text" name="invThumbnail" value="/images/no-image.png"></label>
-                    <label class="top">Price <input type="text" name="invPrice"></label>
-                    <label class="top">Stock <input type="text" name="invStock"></label>
-                    <label class="top">Color <input type="text" name="invColor"></label>
+                    <label class="top">Make <input type="text" name="invMake"  <?php if(isset($invMake)){echo "value='$invMake'";}  ?> required></label>
+                    <label class="top">Model <input type="text" name="invModel"  <?php if(isset($invModel)){echo "value='$invModel'";}  ?> required></label>
+                    <label class="top">Description <input type="text" name="invDescription"  <?php if(isset($invDescription)){echo "value='$invDescription'";}  ?> required></label>
+                    <label class="top">Image Path <input type="text" name="invImage" value="/images/no-image.png" <?php if(isset($invImage)){echo "value='$invImage'";}  ?> required></label>
+                    <label class="top">Thumbnail Path<input type="text" name="invThumbnail" value="/images/no-image.png" <?php if(isset($invThumbnail)){echo "value='$invThumbnail'";}  ?> required></label>
+                    <label class="top">Price <input type="number" step="any" name="invPrice" <?php if(isset($invPrice)){echo "value='$invPrice'";}  ?> required></label>
+                    <label class="top">Stock <input type="number" step="any" name="invStock" <?php if(isset($invStock)){echo "value='$invStock'";}  ?> required></label>
+                    <label class="top">Color <input type="text" name="invColor" <?php if(isset($invColor)){echo "value='$invColor'";}  ?> required></label>
                     <input type="submit" name="submit" id="regbtn" value="New Vehicle" class="submitBtn">
                     <input type="hidden" name="action" value="new-vehicle">
                 </form>

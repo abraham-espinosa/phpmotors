@@ -31,7 +31,7 @@
                         echo $message;
                     }
                 ?>       
-                <label class="top">Classification Name <input type="text" name="classificationName"></label>
+                <label class="top">Classification Name <input type="text" name="classificationName" pattern="[A-Za-z ]{2,}" <?php if(isset($classificationName)){echo "value='$classificationName'";}  ?> required ></label>
                 <input type="submit" name="submit" id="regbtn" value="Add Classification" class="submitBtn">
                 <input type="hidden" name="action" value="new-classification">
             </form>
