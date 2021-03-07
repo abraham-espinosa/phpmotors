@@ -1,4 +1,11 @@
 <?php
+    // Check if theres is a session created
+    if(!$_SESSION['loggedin']){
+        header('Location: ../index.php');
+    }
+    if($_SESSION['clientData']['clientLevel'] < 2){
+        header('Location: ../index.php');
+    }
     // Build a select list using the $classifications array
     $selectList = '<select name="classificationId" required>';
     $selectList .= "<option value='' disabled selected>Choose Car Classification</option>";

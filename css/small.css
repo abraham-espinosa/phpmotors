@@ -30,6 +30,13 @@ header p{
     font-size: 1.1rem;
     color: #8d8d8d;
 }
+#admin{
+    grid-column: 2/3;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #8d8d8d;
+}
 
 /* Navigation Bar */
 nav ul {

@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php
+    // Check if theres is a session created
+    if(!$_SESSION['loggedin']){
+        header('Location: ../index.php');
+    }
+    if($_SESSION['clientData']['clientLevel'] < 2){
+        header('Location: ../index.php');
+    }
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>

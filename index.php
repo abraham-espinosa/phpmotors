@@ -7,6 +7,9 @@ require_once 'model/main-model.php';
 // Get the functions library
 require_once 'library/functions.php';
 
+// Create or access a Session
+session_start();
+
 // Get the array of classifications
 $classifications = getClassifications();
 
@@ -23,12 +26,14 @@ $action = filter_input(INPUT_POST, 'action');
   $action = filter_input(INPUT_GET, 'action');
  }
 
- switch ($action){
- case 'something':
-  
-  break;
- 
- default:
+if(isset($_COOKIE['firstname'])){
+  $cookieFirstname = filter_input(INPUT_COOKIE, 'firstname', FILTER_SANITIZE_STRING);
+}
+
+switch ($action){
+  case 'something':
+  break; 
+default:
   include 'view/home.php';
 }
 

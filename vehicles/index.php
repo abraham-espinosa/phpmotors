@@ -11,6 +11,9 @@ require_once '../model/vehicles-model.php';
 // Get the functions library
 require_once '../library/functions.php';
 
+// Create or access a Session
+session_start();
+
 // Get the array of classifications
 $classifications = getClassifications1();
 
@@ -33,7 +36,11 @@ $navList = buildNavigation($classifications);
 $action = filter_input(INPUT_POST, 'action');
  if ($action == NULL){
   $action = filter_input(INPUT_GET, 'action');
- }
+}
+
+if(isset($_COOKIE['firstname'])){
+  $cookieFirstname = filter_input(INPUT_COOKIE, 'firstname', FILTER_SANITIZE_STRING);
+}
 
  switch ($action){
   case 'add-classification':

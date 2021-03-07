@@ -31,8 +31,8 @@
                         echo $message;
                     }
                 ?>       
-                <label class="top">First Name <input type="text" name="clientFirstname" pattern="[A-Za-z ]{5,}" <?php if(isset($clientFirstname)){echo "value='$clientFirstname'";}  ?> required ></label>
-                <label class="top">Last Name <input type="text" name="clientLastname" pattern="[A-Za-z ]{5,}" <?php if(isset($clientLastname)){echo "value='$clientLastname'";}  ?> required ></label>
+                <label class="top">First Name <input type="text" name="clientFirstname" <?php if(isset($clientFirstname)){echo "value='$clientFirstname'";}  ?> required ></label>
+                <label class="top">Last Name <input type="text" name="clientLastname" <?php if(isset($clientLastname)){echo "value='$clientLastname'";}  ?> required ></label>
                 <label class="top">Email <input type="email" name="clientEmail" placeholder="someone@gmail.com" <?php if(isset($clientEmail)){echo "value='$clientEmail'";}  ?> required ></label>
                 <label class="top">Password <span><br>Must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character.</span><input type="password" name="clientPassword" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required></label>
                 <input type="submit" name="submit" id="regbtn" value="Register" class="submitBtn">

@@ -30,6 +30,9 @@
                     if (isset($message)) {
                         echo $message;
                     }
+                    if (isset($_SESSION['message'])) {
+                        echo $_SESSION['message'];
+                    }
                 ?>   
                 <label class="top">Email<input type="email" name="clientEmail" placeholder="someone@gmail.com" <?php if(isset($clientEmail)){echo "value='$clientEmail'";}  ?> required></label>
                 <label class="top">Password <span><br>Must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character.</span><input type="password" name="clientPassword" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required></label>
