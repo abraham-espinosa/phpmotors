@@ -27,7 +27,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="PHP Motors - BYUI" />
-    <title>Registration | PHP Motors</title>
+    <title>Add Vehicle | PHP Motors</title>
     <link href="/phpmotors/css/normalize.css" rel="stylesheet">
     <link href="/phpmotors/css/small.css" media="screen" rel="stylesheet">
     <link href="/phpmotors/css/medium.css" media="screen" rel="stylesheet">

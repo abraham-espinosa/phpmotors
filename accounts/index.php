@@ -126,6 +126,78 @@ switch ($action){
     $_SESSION['loggedin'] = FALSE;
     session_destroy();
     include '../view/home.php';
+  case 'updateAccount':
+    include '../view/client-update.php';
+    break;
+  case 'updateInfo':
+    // Filter and store the data
+    $clientFirstname = filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING);
+    $clientLastname = filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING);
+    $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_STRING);
+    $clientData = getClient($clientEmail);
+    // Run basic checks, return if errors
+    if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail)) {
+      $message = '<p class="notice">Please complete all the fields.</p>';
+      include '../view/client-update.php';
+      exit;
+      }
+
+    if($_SESSION['clientData']['clientEmail'] != $clientEmail){
+      // Check for an existing email address
+      $existingEmail = checkExistingEmail($clientEmail);
+      if($existingEmail){
+        $message = '<p class="notice">That email address already exists. Try a different one</p>';
+        include '../view/client-update.php';
+        exit;
+      }    
+    }
+    $clientId = $_SESSION['clientData']['clientId'];
+    // Send the data to the model
+    $updateResult = updateInfo($clientFirstname, $clientLastname, $clientEmail, $clientId);  
+    
+    $clientData = getClient($clientEmail);
+    $_SESSION['clientData'] = $clientData;
+    // Check and report the result
+    if($updateResult){
+      $message = "<p class='notify'>Congratulations, your information account was successfully updated.</p>";
+      $_SESSION['message'] = $message;
+      header('location: /phpmotors/accounts/');
+      exit;
+    } else {
+      $message = "<p>Error. Your account was not updated.</p>";
+      include '../view/client-update.php';
+      exit;
+    }
+    break;
+  case 'updateAccountPassword':
+    $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
+    $checkPassword = checkPassword($clientPassword);
+    // Check for missing data
+    if(empty($checkPassword)){
+      $message = '<p>Please check password requirements.</p>';
+      include '../view/client-update.php';
+      exit; 
+    }
+    // Hash the checked password
+    $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+
+    $clientId = $_SESSION['clientData']['clientId'];
+
+    // Send the data to the model
+    $regOutcome = updatePassword($hashedPassword, $clientId);
+
+    // Check and report the result
+    if($regOutcome === 1){
+      $message = "<p class='notify'>Congratulations, your password was successfully updated.</p>";
+      $_SESSION['message'] = $message;
+      header('location: /phpmotors/accounts/');
+      exit;
+    } else {
+      $message = "<p>Error. Your password was not updated.</p>";
+      include '../view/client-update.php';
+      exit;
+    }
+    break;
   default:
     include '../view/admin.php';
   }

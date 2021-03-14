@@ -29,19 +29,32 @@
         </nav>
         <main>
             <div>
+            <?php
+                    if (isset($message)) {
+                        echo $message;
+                    }
+                    if (isset($_SESSION['message'])) {
+                        echo $_SESSION['message'];
+                    }
+                ?>   
                 <h1><?php echo $_SESSION['clientData']['clientFirstname'] . " " . $_SESSION['clientData']['clientLastname'];?></h1>
                 <p>You are logged in.</p>
                 <ul> 
                     <li>Fisrt Name: <?php echo $_SESSION['clientData']['clientFirstname'];?></li>
                     <li>Last Name: <?php echo $_SESSION['clientData']['clientLastname'];?></li>
                     <li>Email: <?php echo $_SESSION['clientData']['clientEmail'];?></li>
-                    <li>Client Level: <?php echo $_SESSION['clientData']['clientLevel'];?></li>
                 </ul>
+                <h1>Account Management</h1>
+                <p>Use this link to update account information.</p>
+                <p><a href='/phpmotors/accounts/index.php?action=updateAccount'>Update Account Information</a></p>
                 <p><?php
                         if($_SESSION['clientData']['clientLevel'] > 1){
+                        echo "<h1>Inventory Management</h1>";
+                        echo "<p>Use this link to manage the inventory.</p>";
                         echo "<p><a href='/phpmotors/vehicles/index.php'>Vehicle Controler</a></p>";
                         }
                 ?><p>
+
             </div>
         </main>
         <!-- Footer -->
