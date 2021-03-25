@@ -20,7 +20,9 @@ function buildNavigation($classifications){
     $navList = '<ul>';
     $navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
     foreach ($classifications as $classification) {
-        $navList .= "<li><a href='/phpmotors/index.php?action=".urlencode($classification['classificationName'])."' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
+        $navList .= "<li><a href='/phpmotors/vehicles/?action=classification&classificationName="
+        .urlencode($classification['classificationName']).
+        "' title='View our $classification[classificationName] lineup of vehicles'>$classification[classificationName]</a></li>";
     }
     $navList .= '</ul>';
     return $navList;
@@ -36,4 +38,39 @@ function buildClassificationList($classifications){
     $classificationList .= '</select>'; 
     return $classificationList; 
 }
+
+// Build a display of vehicles within an unordered list
+function buildVehiclesDisplay($vehicles){
+    $dv = '<ul id="inv-display">';
+    foreach ($vehicles as $vehicle) {
+     $dv .= '<li>';
+     $dv .= "<a href='/phpmotors/vehicles/?action=vehicle&invId="
+     .urlencode($vehicle['invId']).
+     "' title='View our $vehicle[invModel] vehicle'><img src='$vehicle[invThumbnail]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'></a>";
+     $dv .= '<hr>';
+     $dv .= "<a href='/phpmotors/vehicles/?action=vehicle&invId="
+     .urlencode($vehicle['invId']).
+     "' title='View our $vehicle[invModel] vehicle'><h2>$vehicle[invMake] $vehicle[invModel]</h2></a>";
+     $dv .= "<span>$vehicle[invPrice]</span>";
+     $dv .= '</li>';
+    }
+    $dv .= '</ul>';
+    return $dv;
+}
+
+// Build a display of vehicles within an unordered list
+function buildVehiclesDisplayId($vehicleDetails){
+    $dv = '<div id="detailsvehicle">';
+    $dv .= "<h1>$vehicleDetails[invMake] $vehicleDetails[invModel]</h1>";
+    $dv .= "<img src='$vehicleDetails[invImage]' alt='Image of $vehicleDetails[invMake] $vehicleDetails[invModel] on phpmotors.com'>";
+    $price = "$" . number_format($vehicleDetails['invPrice']);
+    $dv .= "<span class='price'>Price: $price</span>";
+    $dv .= "<h2>$vehicleDetails[invMake] $vehicleDetails[invModel] Details</h2>";
+    $dv .= "<span>$vehicleDetails[invDescription]</span>";
+    $dv .= "<span>Color: $vehicleDetails[invColor]</span>";
+    $dv .= "<span># in Stock: $vehicleDetails[invStock]</span>";
+    $dv .= '</div>';
+    return $dv;
+}
+
 ?>

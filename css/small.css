@@ -124,7 +124,7 @@ img.button-display{
     margin-right: auto;
 }
 
-main article section img {
+div.home article section img {
     padding: .5em;
     width: 50px;
 }
@@ -193,7 +193,51 @@ form input.submitBtn:hover {
     background-color: rgb(119, 119, 119);
 }
 
+/* Classificactions */
 
+#inv-display{
+    margin: 0;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+   }
+   
+   #inv-display li{
+    margin-bottom: 1em;
+    list-style-type: none;
+    border: solid 1px #888;
+    text-align: center;
+   }
+   
+   #inv-display li img {
+       max-width: 100%;
+       object-fit: cover;
+       border-radius: 1px;
+   }
+
+   #inv-display li hr {
+    border-top: 1.5px solid black;
+  }
+
+
+  /* Vehicles */
+
+  #detailsvehicle{
+      display: grid;
+      grid-template-columns: 1fr;
+  }
+
+  .price {
+    border-bottom: solid 1px black;
+  }
+
+  #detailsvehicle img{
+    width: 100%;
+}
+
+#detailsvehicle > *{
+margin-bottom: 1rem;
+}
 
 
 

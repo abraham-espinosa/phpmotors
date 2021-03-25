@@ -194,6 +194,28 @@ if(isset($_COOKIE['firstname'])){
       exit;
       }	
     break;   
+  case 'classification':
+    $classificationName = filter_input(INPUT_GET, 'classificationName', FILTER_SANITIZE_STRING);
+    $vehicles = getVehiclesByClassification($classificationName);
+    if(!count($vehicles)){
+      $message = "<p class='notice'>Sorry, no $classificationName vehicles could be found.</p>";
+    } else {
+      $vehicleDisplay = buildVehiclesDisplay($vehicles);
+      //echo $vehicleDisplay;
+      //exit;
+    }
+    include '../view/classification.php'; 
+    break;
+  case 'vehicle':
+    $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_STRING);
+    $vehicleDetails = getVehicleDetailsById($invId);
+    if(!count($vehicleDetails)){
+      $message = "<p class='notice'>Sorry, no $vehicleDetails[invMake] vehicles could be found.</p>";
+    } else {
+      $vehicleDisplay = buildVehiclesDisplayId($vehicleDetails);
+    }
+    include '../view/vehicle-detail.php';
+    break;
   default:
     $classificationList = buildClassificationList($classifications);
     include '../view/vehicle-management.php';
