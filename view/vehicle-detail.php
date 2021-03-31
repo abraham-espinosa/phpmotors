@@ -22,10 +22,18 @@
             <?php echo $navList; ?>
         </nav>
         <main>
-            <div>
+            <div id="vehicleDetails">
+                <div id="vehicleInfo">
                 <?php if(isset($vehicleDisplay)){
                     echo $vehicleDisplay;} 
                 ?>
+                </div>
+                <div id="imagesTn">
+                    <h2>More pictures</h2>
+                <?php if(isset($tnimagesDisplay)){
+                    echo $tnimagesDisplay;} 
+                ?>
+                </div>
             </div>
         </main>
         <!-- Footer -->

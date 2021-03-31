@@ -75,6 +75,41 @@
         width: 100%;
     }
 
+    div.expand {
+        display: inline;
+        grid-gap:0;
+    }
+
+    #vehicleDetails {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    
+    #imagesTn {
+        margin-left: .5rem;
+        margin-top: 4rem;
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+    
+    #imagesTn h2{
+        display: none;
+    }
+    
+    #vehicleInfo {
+        grid-column: 2/8;
+    }
+    
+    div.expand img {
+        height: auto;
+        width: auto;
+        object-fit: none;
+    }
+    
+    div.expand img:hover {
+        box-shadow: 0 0 50px #888;
+    }
+
 }
 
 /*end medium */

@@ -152,7 +152,7 @@ function deleteVehicle($invId){
 //Get a list of vehicles based on the classification
 function getVehiclesByClassification($classificationName){
     $db = phpmotorsConnect();
-    $sql = 'SELECT * FROM inventory WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName)';
+    $sql = 'SELECT classificationId, invColor, invDescription, inventory.invId, invModel, invMake, invPrice, invStock, images.imgPath FROM inventory JOIN images ON inventory.invId = images.invId WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName) AND images.imgPath LIKE "%-tn%" AND images.imgPrimary = 1';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':classificationName', $classificationName, PDO::PARAM_STR);
     $stmt->execute();
@@ -165,6 +165,7 @@ function getVehiclesByClassification($classificationName){
 function getVehicleDetailsById($invId){
     $db = phpmotorsConnect();
     $sql = 'SELECT * FROM inventory WHERE invId = :invId';
+    $sql = 'SELECT classificationId, invColor, invDescription, inventory.invId, invModel, invMake, invPrice, invStock, images.imgPath FROM inventory JOIN images ON inventory.invId = images.invId WHERE inventory.invId = :invId AND images.imgPrimary = 1 AND images.imgPath NOT LIKE "%-tn%"';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
     $stmt->execute();
@@ -173,5 +174,15 @@ function getVehicleDetailsById($invId){
     return $invInfo;
 }
 
+// Get information for all vehicles
+function getVehicles(){
+	$db = phpmotorsConnect();
+	$sql = 'SELECT invId, invMake, invModel FROM inventory';
+	$stmt = $db->prepare($sql);
+	$stmt->execute();
+	$invInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$stmt->closeCursor();
+	return $invInfo;
+}
 
 ?>

@@ -10,6 +10,8 @@ require_once '../model/main-model.php';
 require_once '../model/vehicles-model.php';
 // Get the functions library
 require_once '../library/functions.php';
+// Get the uploads model
+require_once '../model/uploads-model.php';
 
 // Create or access a Session
 session_start();
@@ -197,7 +199,7 @@ if(isset($_COOKIE['firstname'])){
   case 'classification':
     $classificationName = filter_input(INPUT_GET, 'classificationName', FILTER_SANITIZE_STRING);
     $vehicles = getVehiclesByClassification($classificationName);
-    if(!count($vehicles)){
+    if(!count($vehicles)){ 
       $message = "<p class='notice'>Sorry, no $classificationName vehicles could be found.</p>";
     } else {
       $vehicleDisplay = buildVehiclesDisplay($vehicles);
@@ -213,6 +215,12 @@ if(isset($_COOKIE['firstname'])){
       $message = "<p class='notice'>Sorry, no $vehicleDetails[invMake] vehicles could be found.</p>";
     } else {
       $vehicleDisplay = buildVehiclesDisplayId($vehicleDetails);
+    }
+    $tnimages = getImagesTn($invId);
+    if(!count($tnimages)){
+      $message = "<p class='notice'>Sorry, no $tnimages[invMake] vehicles could be found.</p>";
+    } else {
+      $tnimagesDisplay = buildImagesTnDisplay($tnimages);
     }
     include '../view/vehicle-detail.php';
     break;
