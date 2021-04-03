@@ -33,9 +33,6 @@
                     if (isset($message)) {
                         echo $message;
                     }
-                    if (isset($_SESSION['message'])) {
-                        echo $_SESSION['message'];
-                    }
                 ?>   
                 <h1><?php echo $_SESSION['clientData']['clientFirstname'] . " " . $_SESSION['clientData']['clientLastname'];?></h1>
                 <p>You are logged in.</p>
@@ -54,7 +51,14 @@
                         echo "<p><a href='/phpmotors/vehicles/index.php'>Vehicle Controler</a></p>";
                         }
                 ?><p>
-
+                <?php 
+                echo "<h1>Manage Your Product Reviews</h1>";
+                if(isset($reviewsByClientDisplay)){
+                    echo $reviewsByClientDisplay;
+                }else{
+                    echo $noreviews;
+                }
+                ?>
             </div>
         </main>
         <!-- Footer -->

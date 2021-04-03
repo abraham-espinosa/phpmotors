@@ -10,6 +10,8 @@ require_once '../model/main-model.php';
 require_once '../model/accounts-model.php';
 // Get the functions library
 require_once '../library/functions.php';
+// Get the accounts model
+require_once '../model/reviews-model.php';
 
 // Get the array of classifications
 $classifications = getClassifications();
@@ -120,6 +122,12 @@ switch ($action){
     // Store the array into the session
     $_SESSION['clientData'] = $clientData;
     // Send them to the admin view
+    $reviewsByClient = getReviewsByClient($_SESSION['clientData']['clientId']);
+    if(empty($reviewsByClient)){
+      $noreviews = "<p>You do not have reviews</p>";
+      }else{
+        $reviewsByClientDisplay = buildReviewsByClietnDisplay($reviewsByClient);
+      }
     include '../view/admin.php';
     exit;
   case 'logout':
@@ -199,6 +207,12 @@ switch ($action){
     }
     break;
   default:
+    $reviewsByClient = getReviewsByClient($_SESSION['clientData']['clientId']);
+    if(empty($reviewsByClient)){
+      $noreviews = "<p>You do not have reviews</p>";
+    }else{
+      $reviewsByClientDisplay = buildReviewsByClietnDisplay($reviewsByClient);
+    }
     include '../view/admin.php';
   }
 ?>

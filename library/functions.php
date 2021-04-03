@@ -239,4 +239,41 @@ function buildImagesTnDisplay($tnimages){
     return $dv;
 }
 
+// Build a display of reviews within an unordered list
+function buildReviewsDisplay($reviewsData){
+    $dv = '<div id="reviews">';
+    foreach ($reviewsData as $review) {
+        $dv .= '<div class="review">';
+        $lettername = substr($review['clientFirstname'],0,1);
+        $lettername = strtoupper($lettername);
+        $upperlastname = ucfirst($review['clientLastname']);
+        $clientTitle = $lettername . $upperlastname;
+        $dayDate = date('j', strtotime($review['reviewDate']));
+        $monthDate = date('F', strtotime($review['reviewDate']));
+        $yearDate = date('Y', strtotime($review['reviewDate']));
+        $dv .= "<h4>$clientTitle wrote on $monthDate $dayDate, $yearDate</h4>";
+        $dv .= "<p>$review[reviewText]</p>";
+        $dv .= '</div>';
+    }
+    $dv .= '</div>';
+    return $dv;
+}
+
+// Build a display of reviews within an unordered list
+function buildReviewsByClietnDisplay($reviewsByClient){
+    $dv = '<ul>';
+    foreach ($reviewsByClient as $review) {
+        $dayDate = date('j', strtotime($review['reviewDate']));
+        $monthDate = date('F', strtotime($review['reviewDate']));
+        $yearDate = date('Y', strtotime($review['reviewDate']));
+        $dv .= "<li>$review[invMake] $review[invModel] (Reviewed on $monthDate $dayDate, $yearDate): <a href='/phpmotors/reviews/?action=editR&reviewId="
+        .urlencode($review['reviewId']).
+        "'>Edit</a> | <a href='/phpmotors/reviews/?action=deleteR&reviewId="
+        .urlencode($review['reviewId']).
+        "'>Delete</a></li>";
+    }
+    $dv .= '</ul>';
+    return $dv;
+}
+
 ?>

@@ -12,6 +12,8 @@ require_once '../model/vehicles-model.php';
 require_once '../library/functions.php';
 // Get the uploads model
 require_once '../model/uploads-model.php';
+// Get the reviews model
+require_once '../model/reviews-model.php';
 
 // Create or access a Session
 session_start();
@@ -222,6 +224,8 @@ if(isset($_COOKIE['firstname'])){
     } else {
       $tnimagesDisplay = buildImagesTnDisplay($tnimages);
     }
+    $reviewsData = getReviewsByItem($invId);
+    $reviewsDisplay = buildReviewsDisplay($reviewsData);
     include '../view/vehicle-detail.php';
     break;
   default:

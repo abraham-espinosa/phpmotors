@@ -1,8 +1,5 @@
-<?php
-    // Check if theres is a session created
-    if(!$_SESSION['loggedin']){
-        header('Location: ../index.php');
-    }
+<?php// Check if theres is a session created
+if(!$_SESSION['loggedin']){header('location:/phpmotors/index.php');}
 ?><!DOCTYPE html>
 <html lang="en">
 
